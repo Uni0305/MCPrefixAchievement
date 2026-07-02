@@ -27,6 +27,11 @@ public class MysqlDatabase {
     // MysqlDatabaseConfig에서 Config 정보 가져오기
     private final MysqlDatabaseConfig config;
 
+    // 생성자
+    private MysqlDatabase(@NotNull MysqlDatabaseConfig config) {
+        this.config = config;
+    }
+
     // MysqlDatabaseConfig에서 Config 정보 가져오기
     public static @NotNull MysqlDatabase initialize(@NotNull JavaPlugin plugin) throws NullPointerException {
         ConfigurationSection bukkitConfig = plugin.getConfig().getConfigurationSection("database");
@@ -36,11 +41,6 @@ public class MysqlDatabase {
 
         MysqlDatabaseConfig databaseConfig = MysqlDatabaseConfig.fromBukkitConfig(bukkitConfig);
         return new MysqlDatabase(databaseConfig);
-    }
-
-    // 생성자
-    private MysqlDatabase(@NotNull MysqlDatabaseConfig config) {
-        this.config = config;
     }
 
     // MySQL 데이터베이스에 연결
@@ -85,5 +85,10 @@ public class MysqlDatabase {
                 throw new RuntimeException(e);
             }
         }, executor);
+    }
+
+    // ExecutorService 종료
+    public void shutdown() {
+        executor.shutdown();
     }
 }
