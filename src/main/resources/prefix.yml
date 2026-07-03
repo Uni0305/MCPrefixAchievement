@@ -2,47 +2,71 @@
     display-name: "<bold><green>[첫걸음]"
     required-stat: "FIRST_JOIN"
     required-stat-value: 1
+    description: "서버에 첫 접속하기"
+    reward: "빵 16개, 횃불 32개"
 2:
     display-name: "<bold><green>[보석 수집가]"
     required-stat: "BREAK_DIAMOND_ORE"
     required-stat-value: 1
+    description: "첫 다이아몬드 채굴하기"
+    reward: "성급함 효과 5분"
 3:
     display-name: "<bold><green>[죽음을 거부하는 자]"
     required-stat: "ANY_DEATH_COUNT"
     required-stat-value: 1
+    description: "서버에서의 첫 죽음"
+    reward: "없음"
 4:
     display-name: "<bold><green>[라바 치킨]"
     required-stat: "LAVA_DEATH_COUNT"
     required-stat-value: 1
+    description: "처음으로 용암에 빠져서 죽기"
+    reward: "화염 저항 포션 1개(지속 시간 3분)"
 5:
     display-name: "<bold><green>[나는 카이사가 될거야]"
     required-stat: "VOID_DEATH_COUNT"
     required-stat-value: 1
+    description: "처음으로 세계의 밖에 떨어져 죽기"
+    reward: "본인의 머리(플레이어 머리)"
 6:
     display-name: "<bold><green>[용살자(龍殺者)]"
     required-stat: "KILL_ENDER_DRAGON"
     required-stat-value: 1
+    description: "첫 엔더드레곤 처치"
+    reward: "없음"
 7:
     display-name: "<bold><green>[망치 나가신다]"
     required-stat: "KILL_ENDERMAN_BY_MACE"
     required-stat-value: 1
+    description: "철퇴로 엔더맨 처치"
+    reward: "점프 강화 명령어(쿨타임 1시간, 유지시간 3분)"
 8:
     display-name: "<bold><green>[건축가]"
     required-stat: "PLACE_BLOCK"
     required-stat-value: 5000
+    description: "블럭 5000개 설치"
+    reward: "비계 64개"
 9:
     display-name: "<bold><green>[전문 노가다꾼]"
     required-stat: "BREAK_BLOCK"
     required-stat-value: 10000
+    description: "블럭 10000개 파괴"
+    reward: "다이아몬드 삽(내구성 3)"
 10:
     display-name: "<bold><green>[내가 바로 가우디]"
     required-stat: "PLACE_BLOCK"
     required-stat-value: 50000
+    description: "블럭 50000개 설치"
+    reward: "스펀지 5개"
 11:
     display-name: "<bold><green>[용의 콧물 도둑]"
     required-stat: "GET_DRAGON_BREATH"
     required-stat-value: 1
+    description: "첫 용의 숨결 획득"
+    reward: "용의 콧물"
 12:
     display-name: "<bold><green>[가정 파괴범]"
     required-stat: "GET_DRAGON_EGG"
     required-stat-value: 1
+    description: "첫 드래곤 알 획득"
+    reward: "마법이 부여된 횡금사과 1개"

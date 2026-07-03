@@ -1,48 +1,52 @@
 package com.github.silvertreekr.mcprefixachievement;
-import com.github.silvertreekr.mcprefixachievement.customconfig.PrefixConfigLoader;
-import com.github.silvertreekr.mcprefixachievement.customconfig.PrefixConfigManager;
-import org.bukkit.plugin.java.JavaPlugin;
 
+import com.github.silvertreekr.mcprefixachievement.command.PrefixCommand;
+import com.github.silvertreekr.mcprefixachievement.config.PrefixConfigLoader;
+import com.github.silvertreekr.mcprefixachievement.config.PrefixConfigManager;
 import com.github.silvertreekr.mcprefixachievement.database.MysqlDatabase;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public final class MCPrefixAchievement extends JavaPlugin {
     private static MCPrefixAchievement instance;
-    public static MCPrefixAchievement getInstance() {
+    private MysqlDatabase mysqlDatabase;
+    private PrefixConfigLoader prefixConfigLoader;
+    private PrefixConfigManager prefixConfigManager;
+
+    public static @NotNull MCPrefixAchievement getInstance() {
         return instance;
     }
 
-    private static @NotNull MysqlDatabase mysqlDatabase;
-    public static @NotNull MysqlDatabase getMysqlDatabase() {
+    public @NotNull MysqlDatabase getMysqlDatabase() {
         return mysqlDatabase;
     }
 
-
-    private static PrefixConfigLoader prefixConfigLoader = new PrefixConfigLoader();
-    public static PrefixConfigLoader getPrefixConfigLoader() {
+    public @NotNull PrefixConfigLoader getPrefixConfigLoader() {
         return prefixConfigLoader;
     }
 
-    private static PrefixConfigManager prefixConfigManager = new PrefixConfigManager();
-    public static PrefixConfigManager getPrefixConfigManager() {
+    public @NotNull PrefixConfigManager getPrefixConfigManager() {
         return prefixConfigManager;
     }
 
     @Override
     public void onEnable() {
-        new PrefixCommand(this);
-
+        instance = this;
 
         // Initialize the DefaultConfig
         saveDefaultConfig();
         reloadConfig();
 
         // Initialize the PrefixConfigLoader
-
+        prefixConfigLoader = new PrefixConfigLoader(this);
         prefixConfigLoader.loadPrefixConfig();
 
         // Initialize the PrefixConfigManager
+        prefixConfigManager = new PrefixConfigManager(this);
         prefixConfigManager.readConfig(prefixConfigLoader);
+
+        // Initialize command
+        new PrefixCommand(this);
 
         // Initialize the MySQL Database
         try {
@@ -50,13 +54,14 @@ public final class MCPrefixAchievement extends JavaPlugin {
         } catch (Exception e) {
             getSLF4JLogger().error("Failed to initialize MySQL database", e);
             getServer().getPluginManager().disablePlugin(this);
-            return;
         }
 
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        if (mysqlDatabase != null) {
+            mysqlDatabase.shutdown();
+        }
     }
 }

@@ -22,6 +22,15 @@ public class MysqlDatabaseConfig {
     // JDBC에 전달할 추가 속성 (옵셔널)
     private final Map<String, Object> properties;
 
+    // 생성자
+    private MysqlDatabaseConfig(@NotNull String address, @NotNull String username, @NotNull String password, @NotNull String database, @NotNull Map<String, Object> properties) {
+        this.address = address;
+        this.username = username;
+        this.password = password;
+        this.database = database;
+        this.properties = properties;
+    }
+
     // DB Config 파일에서 읽어온 값으로 MysqlDatabaseConfig 객체를 생성힘
     public static @NotNull MysqlDatabaseConfig fromBukkitConfig(@NotNull ConfigurationSection config) throws IllegalArgumentException {
 
@@ -47,15 +56,6 @@ public class MysqlDatabaseConfig {
         Map<String, Object> properties = propertiesSection != null ? propertiesSection.getValues(false) : new HashMap<>();
 
         return new MysqlDatabaseConfig(address, username, password, database, properties);
-    }
-
-    // 생성자
-    private MysqlDatabaseConfig(@NotNull String address, @NotNull String username, @NotNull String password, @NotNull String database, @NotNull Map<String, Object> properties) {
-        this.address = address;
-        this.username = username;
-        this.password = password;
-        this.database = database;
-        this.properties = properties;
     }
 
     // Getter
