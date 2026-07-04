@@ -8,6 +8,7 @@ import com.github.silvertreekr.mcprefixachievement.dao.UserPrefixesDAO;
 import com.github.silvertreekr.mcprefixachievement.dao.UserStatsDAO;
 import com.github.silvertreekr.mcprefixachievement.dao.UserStatsManager;
 import com.github.silvertreekr.mcprefixachievement.database.MysqlDatabase;
+import com.github.silvertreekr.mcprefixachievement.listener.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -81,6 +82,8 @@ public final class MCPrefixAchievement extends JavaPlugin {
 
         userStatsManager = new UserStatsManager(userStatsDAO);
 
+        // Register EventListeners
+        new BlockBreakEventListener(this);
         new BlockPlaceEventListener(this);
         new EntityDeathEventListener(this);
         new EntityPickupItemEventListener(this);
