@@ -57,7 +57,7 @@ public class UserStatsDAO {
 
     public CompletableFuture<Void> setStats(UUID uuid, Map<PrefixStat, Integer> stats) {
         return database.runAsync(connection -> {
-           String sql = "INSERT INTO user_stats(uuid, stat, value) VALUES (?, ?, ?);";
+           String sql = "INSERT INTO user_stats(uuid, stat, value) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE value = VALUES(value);";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 for (Map.Entry<PrefixStat, Integer> entry : stats.entrySet()) {
                     statement.setString(1, uuid.toString());

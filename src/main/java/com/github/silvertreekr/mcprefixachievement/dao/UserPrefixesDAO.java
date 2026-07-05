@@ -57,7 +57,7 @@ public class UserPrefixesDAO {
 
     public CompletableFuture<Void> addPrefixes(UUID uuid, Set<Integer> prefixIDs) {
         return database.runAsync(connection -> {
-            String sql = "INSERT INTO user_prefixes(uuid, prefix_id) VALUES (?, ?);";
+            String sql = "INSERT IGNORE INTO user_prefixes(uuid, prefix_id) VALUES (?, ?);";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 for (int id : prefixIDs) {
                     statement.setString(1, uuid.toString());
