@@ -7,6 +7,7 @@ import com.github.silvertreekr.mcprefixachievement.dao.UserStatsManager;
 import com.github.silvertreekr.mcprefixachievement.model.Prefix;
 import com.github.silvertreekr.mcprefixachievement.model.PrefixStat;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.bukkit.Material;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -64,7 +65,9 @@ public class EntityDeathEventListener implements Listener {
         if (event.getEntityType().equals(EntityType.ENDERMAN)) {
             if (event.getEntity().getKiller() != null) {
                 UUID uuid = event.getEntity().getKiller().getUniqueId();
-                if (event.getDamageSource().getDamageType().equals(DamageType.MACE_SMASH)) {
+                Player killer = event.getEntity().getKiller();
+                boolean killedWithMace = killer.getInventory().getItemInMainHand().getType().equals(Material.MACE);
+                if (killedWithMace) {
                     int count = statsManager.getStatValue(uuid, PrefixStat.KILL_ENDERMAN_BY_MACE);
                     count++;
                     statsManager.setStatValue(uuid, PrefixStat.KILL_ENDERMAN_BY_MACE, count);
