@@ -37,19 +37,19 @@ public class MysqlDatabaseConfig {
         // NULL 체크
         String address = config.getString("address");
         if (address == null) {
-            throw new IllegalArgumentException("MyuSQL address is null");
+            throw new IllegalArgumentException("MySQL address is null");
         }
         String username = config.getString("username");
         if (username == null) {
-            throw new IllegalArgumentException("MyuSQL usenname is null");
+            throw new IllegalArgumentException("MySQL username is null");
         }
         String password = config.getString("password");
         if (password == null) {
-            throw new IllegalArgumentException("MyuSQL password is null");
+            throw new IllegalArgumentException("MySQL password is null");
         }
         String database = config.getString("database");
         if (database == null) {
-            throw new IllegalArgumentException("MyuSQL database is null");
+            throw new IllegalArgumentException("MySQL database is null");
         }
 
         ConfigurationSection propertiesSection = config.getConfigurationSection("properties");
