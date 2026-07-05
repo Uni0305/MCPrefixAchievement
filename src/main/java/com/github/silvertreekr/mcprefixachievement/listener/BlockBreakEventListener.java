@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class BlockBreakEventListener implements Listener {
     private final MCPrefixAchievement plugin = MCPrefixAchievement.getInstance();
-    private final UserStatsManager statsManager = plugin.getUserStatsManager();;
+    private final UserStatsManager statsManager = plugin.getUserStatsManager();
 
     public BlockBreakEventListener(JavaPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
