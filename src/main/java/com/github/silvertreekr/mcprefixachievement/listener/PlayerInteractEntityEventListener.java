@@ -7,14 +7,16 @@ import com.github.silvertreekr.mcprefixachievement.dao.UserStatsManager;
 import com.github.silvertreekr.mcprefixachievement.model.Prefix;
 import com.github.silvertreekr.mcprefixachievement.model.PrefixStat;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,35 +40,67 @@ public class PlayerInteractEntityEventListener implements Listener {
         }
     }
 
+    private int countDragonBreath(Player player) {
+        int total = 0;
+        for (ItemStack stack : player.getInventory().getContents()) {
+            if (stack != null && stack.getType() == Material.DRAGON_BREATH) {
+                total += stack.getAmount();
+            }
+        }
+        return total;
+    }
+
     public PlayerInteractEntityEventListener(JavaPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
-    public void onPlayerCollectDragonBreath(PlayerInteractEntityEvent event) {
-        UUID uuid = event.getPlayer().getUniqueId();
-        int prefixID = -1;
-        if (event.getRightClicked() instanceof AreaEffectCloud enetity) {
-            ItemStack bottle = event.getPlayer().getInventory().getItem(event.getHand());
-            if (bottle != null && bottle.getType().equals(Material.GLASS_BOTTLE)) {
-
-                if (enetity.getParticle().equals(Particle.DRAGON_BREATH)) {
-                    int count = statsManager.getStatValue(uuid, PrefixStat.GET_DRAGON_BREATH);
-                    count++;
-                    statsManager.setStatValue(uuid, PrefixStat.GET_DRAGON_BREATH, count);
-                    if (count == 1) {
-                        prefixID = 11;
-                        ItemStack dragonBreath = new ItemStack(Material.DRAGON_BREATH);
-                        ItemMeta itemMeta = dragonBreath.getItemMeta();
-                        itemMeta.customName(Component.text("용의 콧물"));
-                        dragonBreath.setItemMeta(itemMeta);
-                        dragonBreath.setAmount(1);
-
-                        event.getPlayer().give(dragonBreath);
-                    }
-                }
-            }
+    public void onPlayerRightClick(PlayerInteractEvent event) {
+        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) {
+            return;
         }
-        grantPrefix(uuid, prefixID, event.getPlayer());
+
+        EquipmentSlot hand = event.getHand();
+        if (hand == null) {
+            return;
+        }
+
+        Player player = event.getPlayer();
+        ItemStack itemBefore = player.getInventory().getItem(hand);
+        if (itemBefore == null || !itemBefore.getType().equals(Material.GLASS_BOTTLE)) {
+            return;
+        }
+
+        UUID uuid = player.getUniqueId();
+        int dragonBreathBefore = countDragonBreath(player);
+
+
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            if (!player.isOnline()) {
+                return;
+            }
+
+            int dragonBreathAfter = countDragonBreath(player);
+            if (dragonBreathAfter <= dragonBreathBefore) {
+                return;
+            }
+
+            int count = statsManager.getStatValue(uuid, PrefixStat.GET_DRAGON_BREATH);
+            count++;
+            statsManager.setStatValue(uuid, PrefixStat.GET_DRAGON_BREATH, count);
+
+            int prefixID = -1;
+            if (count == 1) {
+                prefixID = 11;
+                ItemStack dragonBreath = new ItemStack(Material.DRAGON_BREATH);
+                ItemMeta itemMeta = dragonBreath.getItemMeta();
+                itemMeta.customName(Component.text("용의 콧물"));
+                dragonBreath.setItemMeta(itemMeta);
+                dragonBreath.setAmount(1);
+
+                player.give(dragonBreath);
+            }
+            grantPrefix(uuid, prefixID, player);
+        });
     }
 }
