@@ -23,7 +23,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.UUID;
 
-public class PlayerInteractEntityEventListener implements Listener {
+public class PlayerGetDragonBreathEventListener implements Listener {
     private final MCPrefixAchievement plugin = MCPrefixAchievement.getInstance();
     private final UserPrefixManager prefixManager = plugin.getUserPrefixManager();
     private final UserStatsManager statsManager = plugin.getUserStatsManager();
@@ -50,7 +50,7 @@ public class PlayerInteractEntityEventListener implements Listener {
         return total;
     }
 
-    public PlayerInteractEntityEventListener(JavaPlugin plugin) {
+    public PlayerGetDragonBreathEventListener(JavaPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 

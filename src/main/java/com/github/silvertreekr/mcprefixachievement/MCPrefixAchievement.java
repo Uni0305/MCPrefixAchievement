@@ -92,7 +92,7 @@ public final class MCPrefixAchievement extends JavaPlugin {
         new EntityDeathEventListener(this);
         new EntityPickupItemEventListener(this);
         new PlayerDeathEventListener(this);
-        new PlayerInteractEntityEventListener(this);
+        new PlayerGetDragonBreathEventListener(this);
         new PlayerJoinEventListener(this);
         new PlayerQuitEventListener(this);
     }
