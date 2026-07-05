@@ -51,7 +51,7 @@ public class PrefixGranter {
 
         Component playerName = Component.text(player.getName());
         Component message = MiniMessage.miniMessage().deserialize(
-                "<bold>[ 칭호 시스템 ] <reset><bold><green><player><reset>님께서 <prefix><reset>을 획득하셨습니다 !"
+                "<bold>[ 칭호 시스템 ] <reset><green><player><reset>님께서 <prefix><reset>을 획득하셨습니다 !"
                 ,Placeholder.component("player", playerName)
                 ,Placeholder.component("prefix", prefix.getDisplayPrefix())
         );
