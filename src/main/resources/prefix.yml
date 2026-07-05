@@ -1,71 +1,71 @@
 1:
-    display-name: "<green><bold>【 <gradient:#A8FF78:#FBF565>첫걸음</gradient> 】</bold></green>"
+    display-name: "<green><bold>【<gradient:#A8FF78:#FBF565>첫걸음</gradient>】</bold></green>"
     required-stat: "FIRST_JOIN"
     required-stat-value: 1
     description: "서버에 첫 접속하기"
     reward: "빵 16개, 횃불 32개"
 2:
-    display-name: "<#00FFFF><bold>【 <gradient:#5FFBF1:#D3FFF7>보석 수집가</gradient> 】</bold></#00FFFF>"
+    display-name: "<#00FFFF><bold>【<gradient:#5FFBF1:#D3FFF7>보석 수집가</gradient>】</bold></#00FFFF>"
     required-stat: "BREAK_DIAMOND_ORE"
     required-stat-value: 1
     description: "첫 다이아몬드 채굴하기"
     reward: "성급함 효과 5분"
 3:
-    display-name: "<#3C3C3C><bold>【 <gradient:#4A4A4A:#D685FF:#4A4A4A>죽음을 거부하는 자</gradient> 】</bold></#3C3C3C>"
+    display-name: "<#3C3C3C><bold>【<gradient:#4A4A4A:#D685FF:#4A4A4A>죽음을 거부하는 자</gradient>】</bold></#3C3C3C>"
     required-stat: "ANY_DEATH_COUNT"
     required-stat-value: 1
     description: "서버에서의 첫 죽음"
     reward: "없음"
 4:
-    display-name: "<#FF3300><bold>【 <gradient:#FF0000:#FFCC00>라바 치킨</gradient> 】</bold></#FF3300>"
+    display-name: "<#FF3300><bold>【<gradient:#FF0000:#FFCC00>라바 치킨</gradient>】</bold></#FF3300>"
     required-stat: "LAVA_DEATH_COUNT"
     required-stat-value: 1
     description: "처음으로 용암에 빠져서 죽기"
     reward: "화염 저항 포션 1개(지속 시간 3분)"
 5:
-    display-name: "<#9400D3><bold>【 <gradient:#00FFFF:#9400D3>나는 카이사가 될거야</gradient> 】</bold></#9400D3>"
+    display-name: "<#9400D3><bold>【<gradient:#00FFFF:#9400D3>나는 카이사가 될거야</gradient>】</bold></#9400D3>"
     required-stat: "VOID_DEATH_COUNT"
     required-stat-value: 1
     description: "처음으로 세계의 밖에 떨어져 죽기"
     reward: "본인의 머리(플레이어 머리)"
 6:
-    display-name: "<#4A004A><bold>【 <gradient:#4B0082:#FF00FF:#4B0082>용살자(龍殺者)</gradient> 】</bold></#4A004A>"
+    display-name: "<#4A004A><bold>【<gradient:#4B0082:#FF00FF:#4B0082>용살자(龍殺者)</gradient>】</bold></#4A004A>"
     required-stat: "KILL_ENDER_DRAGON"
     required-stat-value: 1
     description: "첫 엔더드레곤 처치"
     reward: "없음"
 7:
-    display-name: "<red><bold>【 <gradient:#FF8C00:#FFE4B5:#FF8C00>망치 나가신다</gradient> 】</bold></red>"
+    display-name: "<red><bold>【<gradient:#FF8C00:#FFE4B5:#FF8C00>망치 나가신다</gradient>】</bold></red>"
     required-stat: "KILL_ENDERMAN_BY_MACE"
     required-stat-value: 1
     description: "철퇴로 엔더맨 처치"
     reward: "점프 강화 명령어(쿨타임 1시간, 유지시간 3분)"
 8:
-    display-name: "<#3E2723><bold>【 <gradient:#FFE082:#FFF9C4:#FFE082>건축가</gradient> 】</bold></#3E2723>"
+    display-name: "<#3E2723><bold>【<gradient:#FFE082:#FFF9C4:#FFE082>건축가</gradient>】</bold></#3E2723>"
     required-stat: "PLACE_BLOCK"
     required-stat-value: 5000
     description: "블럭 5000개 설치"
     reward: "비계 64개"
 9:
-    display-name: "<#1A1C1E><bold>【 <gradient:#D7C49E:#F4EBE1:#D7C49E>전문 노가다꾼</gradient> 】</bold></#1A1C1E>"
+    display-name: "<#1A1C1E><bold>【<gradient:#D7C49E:#F4EBE1:#D7C49E>전문 노가다꾼</gradient>】</bold></#1A1C1E>"
     required-stat: "BREAK_BLOCK"
     required-stat-value: 10000
     description: "블럭 10000개 파괴"
     reward: "다이아몬드 삽(내구성 3)"
 10:
-    display-name: "<#005A9C><bold>【 <gradient:#FFD700:#FFFFE0:#FFD700>내가 바로 가우디</gradient> 】</bold></#005A9C>"
+    display-name: "<#005A9C><bold>【<gradient:#FFD700:#FFFFE0:#FFD700>내가 바로 가우디</gradient>】</bold></#005A9C>"
     required-stat: "PLACE_BLOCK"
     required-stat-value: 50000
     description: "블럭 50000개 설치"
     reward: "스펀지 5개"
 11:
-    display-name: "<#4A004A><bold>【 <gradient:#FFB6C1:#FFE4E1:#FFB6C1>용의 콧물 도둑</gradient> 】</bold></#4A004A>"
+    display-name: "<#4A004A><bold>【<gradient:#FFB6C1:#FFE4E1:#FFB6C1>용의 콧물 도둑</gradient>】</bold></#4A004A>"
     required-stat: "GET_DRAGON_BREATH"
     required-stat-value: 1
     description: "첫 용의 숨결 획득"
     reward: "용의 콧물"
 12:
-    display-name: "<#3A0007><bold>【 <gradient:#FF4E50:#F9D423:#FF4E50>가정 파괴범</gradient> 】</bold></#3A0007>"
+    display-name: "<#3A0007><bold>【<gradient:#FF4E50:#F9D423:#FF4E50>가정 파괴범</gradient>】</bold></#3A0007>"
     required-stat: "GET_DRAGON_EGG"
     required-stat-value: 1
     description: "첫 드래곤 알 획득"

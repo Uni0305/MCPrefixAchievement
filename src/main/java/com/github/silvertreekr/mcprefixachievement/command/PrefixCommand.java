@@ -36,7 +36,7 @@ public class PrefixCommand extends BukkitCommand {
         switch (args[0]) {
             case "정보" -> {
                 if (args.length == 1) {
-                    sender.sendRichMessage("<bold>[ 칭호 시스템 ] <reset>사용법: /칭호 정보 [칭호명]");
+                    sender.sendRichMessage("<bold>[ 칭호 시스템 ] <reset>사용법: /칭호 정보 [칭호 ID]");
                     return true;
                 }
                 if (args.length == 2) {
@@ -72,7 +72,7 @@ public class PrefixCommand extends BukkitCommand {
                 if (args.length == 1) {
                     int index = 1;
                     for (Map.Entry<Integer, Prefix> entry : prefixMap.entrySet()) {
-                        if (index > 15) break;
+                        if (index > 10) break;
                         sender.sendRichMessage("<bold>[ 칭호 시스템 ] <reset>%d. <prefix>".formatted(entry.getKey()), Placeholder.component("prefix", entry.getValue().getDisplayPrefix()));
                         index++;
                     }
@@ -81,7 +81,7 @@ public class PrefixCommand extends BukkitCommand {
                 if (args.length == 2) {
                     try {
                         int page = Integer.parseInt(args[1]);
-                        int pageSize = 15;
+                        int pageSize = 10;
                         int skip = (page - 1) * pageSize;
                         if (skip >= prefixMap.size()) {
                             sender.sendRichMessage("<bold>[ 칭호 시스템 ] <reset><red>해당 페이지에는 칭호가 존재하지 않습니다.");
